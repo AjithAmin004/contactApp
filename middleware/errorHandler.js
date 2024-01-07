@@ -38,7 +38,11 @@ const errorHandler = (err, req, res, next) => {
       });
       break;
     default:
-      console.log("No Error");
+      res.status(400).json({
+        title:"Mongoose error",
+        message: err.message,
+        statckTrace: err.stack,
+      })
       break;
   }
 };
